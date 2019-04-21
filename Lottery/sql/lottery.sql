@@ -1331,7 +1331,7 @@ CREATE TABLE IF NOT EXISTS `prize` (
 -- 表的结构 `user`
 --
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'QQ号或邮箱',
   `userName` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '用户名',

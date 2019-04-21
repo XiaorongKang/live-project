@@ -67,8 +67,7 @@ public class PerceptionUtil {
 	 */
 	public static int comErr(PerceptionTestUnit[] perceptionTestUnit,double[] weight) {
 		int err=0,i;
-		for(i=0;i<nTrain;i++)
-		{
+		for(i=0;i<nTrain;i++){
 			err = err+ perceptionTestUnit[i].getOutput() - classOutPerceptron(comOutput(perceptionTestUnit[i].getInput(),weight));
 		}
 		return err;
