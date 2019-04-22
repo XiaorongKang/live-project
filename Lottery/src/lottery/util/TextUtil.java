@@ -63,4 +63,40 @@ public class TextUtil {
         }
     }
 
+    /**
+     * @param
+     * @return void
+     * @author Murphy
+     * @date 2019/4/22 14:31
+     * @description 执行Python程序
+     * 需要的依赖在 “.\Lottery\src\lottery\python\analysis.py” 已声明
+     */
+    public static void executePython() {
+        Runtime runtime = Runtime.getRuntime();
+        String cmd = "python .\\Lottery\\src\\lottery\\python\\analysis.py";
+        String output = "提示：请注意使用环境，" +
+                "#pymysql：pip3 install pymysql\n" +
+                "#seaborn：conda install seaborn\n" +
+                "#numpy:conda install numpy\n" +
+                "# wordcloud:pip3 install wordcloud\n" +
+                "from wordcloud import WordCloud, STOPWORDS\n" +
+                "from matplotlib: pip3 install matplotlib\n";
+        System.err.println(output);
+        try {
+            Process process = runtime.exec(cmd);
+            InputStream in = process.getInputStream();
+            InputStreamReader reader = new InputStreamReader(in);
+            BufferedReader br = new BufferedReader(reader);
+            StringBuffer sb = new StringBuffer();
+            String message;
+            while ((message = br.readLine()) != null) {
+                sb.append(message);
+            }
+            System.out.println(sb);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 }
