@@ -26,12 +26,12 @@ def plot_anasis(all_data):
     sns.distplot(hour_set, 24, color='lightcoral')
     plt.xticks(np.arange(0, 25, 1.0), fontsize=15)
     plt.yticks(fontsize=15)
-    myfont = FontProperties(fname=r'simfang.ttf',size=22)#标题字体样式
-    myfont2 = FontProperties(fname=r'simfang.ttf',size=18)#横纵坐标字体样式
+    myfont = FontProperties(fname=r'.\Lottery\src\lottery\python\simfang.ttf',size=22)#标题字体样式
+    myfont2 = FontProperties(fname=r'.\Lottery\src\lottery\python\simfang.ttf',size=18)#横纵坐标字体样式
     plt.title('聊天时间分布', fontproperties=myfont)
     plt.xlabel('时间段', fontproperties=myfont2)
     plt.ylabel('聊天时间分布', fontproperties=myfont2)
-    save_img(plt.gcf(), 'C:/Users/Murphy/PycharmProjects/ChatRecord/chat_time.png')
+    save_img(plt.gcf(), 'chat_time.png')
     plt.close()
 
 
@@ -44,7 +44,7 @@ def word_could_ana(content):
                           width=1500,
                           height=800,
                           font_step=1,
-                          font_path='simfang.ttf').generate(text)
+                          font_path='.\Lottery\src\lottery\python\simfang.ttf').generate(text)
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     save_img(plt.gcf(), 'analysis.png')

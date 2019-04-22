@@ -74,6 +74,14 @@ public class TextUtil {
     public static void executePython() {
         Runtime runtime = Runtime.getRuntime();
         String cmd = "python .\\Lottery\\src\\lottery\\python\\analysis.py";
+        String output = "提示：请注意使用环境，" +
+                "#pymysql：pip3 install pymysql\n" +
+                "#seaborn：conda install seaborn\n" +
+                "#numpy:conda install numpy\n" +
+                "# wordcloud:pip3 install wordcloud\n" +
+                "from wordcloud import WordCloud, STOPWORDS\n" +
+                "from matplotlib: pip3 install matplotlib\n";
+        System.err.println(output);
         try {
             Process process = runtime.exec(cmd);
             InputStream in = process.getInputStream();
