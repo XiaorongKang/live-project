@@ -1,4 +1,4 @@
-import lottery.util.DBUtil;
+import lottery.util.DatabaseUtil;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class DBTest {
 
     @Test
     public void test() throws SQLException {
-        Connection connection = DBUtil.getInstance();
+        Connection connection = DatabaseUtil.getInstance();
         String sql = "select  * from chat_record ORDER BY recordId desc ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
