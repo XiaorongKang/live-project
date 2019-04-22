@@ -19,7 +19,7 @@ public class TextUtil {
      */
     public static void resovle(String fileName) throws IOException, SQLException {
 
-        DBUtil.clearTable();
+        DatabaseUtil.clearTable();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)));
         // 每一行
         String line = null;
@@ -40,7 +40,7 @@ public class TextUtil {
 
             if (matcher.find()) {
                 // 如果找到数据就存进数据库
-                DBUtil.store2DB(matcher);
+                DatabaseUtil.store2DB(matcher);
                 presentString = new StringBuilder(line);
             }
         }
@@ -53,11 +53,11 @@ public class TextUtil {
                 "(.*)");//匹配content
         Matcher matcher = pattern.matcher(presentString.toString());
         if (matcher.find()) {
-            DBUtil.store2DB(matcher);
+            DatabaseUtil.store2DB(matcher);
         }
         // 关闭数据库连接
         try {
-            DBUtil.close(null, null, DBUtil.getConnection());
+            DatabaseUtil.close(null, null, DatabaseUtil.getConnection());
         } catch (SQLException e) {
             e.printStackTrace();
         }

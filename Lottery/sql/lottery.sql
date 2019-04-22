@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 -- 表的结构 `awardrecord`
 --
 
-DROP TABLE IF EXISTS `awardrecord`;
-CREATE TABLE IF NOT EXISTS `awardrecord` (
+DROP TABLE IF EXISTS `award_record`;
+CREATE TABLE IF NOT EXISTS `award_record` (
   `award_recordId` int(11) NOT NULL AUTO_INCREMENT COMMENT '获奖记录id',
   `userId` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT ' 	用户id',
   `userName` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
@@ -1330,9 +1330,9 @@ CREATE TABLE IF NOT EXISTS `prize` (
 --
 -- 表的结构 `user`
 --
-
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'QQ号或邮箱',
   `userName` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '用户名',
   `userType` int(1) NOT NULL DEFAULT '0' COMMENT '用户类型：0普通学生，1助教，2老师，3系统消息',
@@ -1342,8 +1342,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `continuousActiveDay` int(11) NOT NULL DEFAULT '0' COMMENT '最大连续有效发言天数',
   `activeRecord` int(11) NOT NULL DEFAULT '0' COMMENT '有效发言条数',
   `isPrize` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否中奖',
-  PRIMARY KEY (`userId`)
+  PRIMARY KEY (`id`,`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
