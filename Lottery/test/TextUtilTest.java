@@ -10,13 +10,13 @@ import java.sql.SQLException;
  */
 public class TextUtilTest {
 
-    //    @Test
-//    public void main() throws IOException, SQLException {
-//        String fileName = "Lottery/test/QQrecord-2022.txt";
-//        TextUtil.resovle(fileName);
-//    }
-    @Test
-    public void main() {
-        TextUtil.executePython();
+        @Test
+    public void main() throws IOException, SQLException {
+        String fileName = "Lottery/test/QQrecord-2022.txt";
+        TextUtil.resovle(fileName);
     }
+//    @Test
+//    public void main() {
+//        TextUtil.executePython();
+//    }
 }

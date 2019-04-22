@@ -1,5 +1,11 @@
 package lottery.bean;
 
+/**
+ * 
+ * @author MingJun
+ * @date 2019/4/21 22:23
+ * 样本数据类
+ */
 public class PerceptionTestUnit {
 
 	int input[] = new int[3];

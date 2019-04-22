@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <link href="price.css" rel="stylesheet">
+        <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1.0; charset=UTF-8" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+	    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="addRow.js"></script>
+        <style>
+            
+            .col-xs-3 ul.nav-tabs{
+                width: 140px;
+                margin-top: 20px;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+            }
+            .col-xs-3 ul.nav-tabs li{
+                margin: 0;
+                border-top: 1px solid #ddd;
+            }
+            .col-xs-3 ul.nav-tabs li:first-child{
+                border-top: none;
+            }
+            .col-xs-3 ul.nav-tabs li a{
+                margin: 0;
+                padding: 8px 16px;
+                border-radius: 0;
+            }
+            .col-xs-3 ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+                color: #fff;
+                background: #0088cc;
+                border: 1px solid #0088cc;
+            }
+            .col-xs-3 ul.nav-tabs li:first-child a{
+                border-radius: 4px 4px 0 0;
+            }
+            .col-xs-3 ul.nav-tabs li:last-child a{
+                border-radius: 0 0 4px 4px;
+            }
+            .col-xs-3 ul.nav-tabs.affix{
+                top: 30px; /* Set the top position of pinned element */
+            }
+        </style>
+        <title>抽奖主页</title>
+        
+    </head>
+    <body data-spy="scroll" data-target="#myScrollspy">
+        <div class="container">
+            <div class="row clearfix">
+                <h1>抽奖系统</h1>
+                <div class="navbar">
+                    <br/>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#">抽奖设置</a></li>
+                        <li><a href="result.html">抽奖结果查看</a></li>
+                        <li><a href="analysis.html">数据挖掘结果</a></li>
+                    </ul>
+                </div>
+                <h2>抽奖设置</h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-4 column">
+                    <div class="col-xs-3" id="myScrollspy">
+                        <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                            <li><a href="#1">上传文件</a></li>
+                            <li><a href="#2">活动名称</a></li>
+                            <li><a href="#3">关键词</a></li>
+                            <li><a href="#4">抽奖文案</a></li>
+                            <li><a href="#5">抽奖日期区间-开始日期</a></li>
+                            <li><a href="#6">抽奖日期区间-结束日期</a></li>
+                            <li><a href="#7">抽奖结果公布日期</a></li>
+                            <li><a href="#8">奖品设置</a></li>
+                            <li><a href="#9">过滤程度</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 column">
+                    <form class="form-inline" role="form" method="POST" action="http://localhost:8888/Lottery/startLotteryDraw" target="nm_iframe">
+                        <div class="form-group" id="1">
+                            <label for="name">上传文件</label>
+                            <input type="file" name="fileName" required/>
+                        </div><br/><br/>
+                        <input type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="提交后无法修改"/>
+                    </form><br/>
+					<iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+                    <form  id="form" class="" action="" method="POST" enctype='application/json'>
+                        <div class="form-group" id="2">
+                            <label for="name">活动名称</label>
+                            <input type="text" name="activeName" class="form-control" required/><br/>
+                        </div>
+                        <div class="form-group" id="3">
+                            <label for="word">关键词</label>
+                            <input type="text" name="keyword" class="form-control" placeholder="请输入一个关键词"required/><br/>
+                        </div>
+                        <div class="form-group" id="4">
+                            <label for name="text">抽奖文案</label>
+                            <textarea name="copyWriting" class="form-control" rows="3" required></textarea><br/>
+                        </div>
+                        
+                        <div class="form-group" id="5">
+                            <label for="name">抽奖日期区间-开始日期</lable>
+                            <input type="date" name="startTime" class="form-control"><br/>
+                        </div>
+                        <div class="form-group" id="6">
+                            <label for="name">抽奖日期区间-结束日期</lable>
+                            <input type="date" name="endTime" class="form-control"><br/>
+                        </div>
+                        <div class="form-group" id="7">
+                            <label for="name">抽奖结果公布日期</lable>
+                            <input type="date" name="showTime" class="form-control"><br/>
+                        </div>
+                        <div class="form-group" id="8">
+                            <table class="table table-hover" id="mytable" lay-even border="1">
+                                <label for="name">奖品设置</lable>
+                                <thead>
+                                    <tr>
+                                        <th>奖品名称</th>
+                                        <th>奖品描述</th>
+                                        <th>中奖人数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="priceName">
+                                            <div class="layui-form-item layui-input-inline">
+                                                <input type="text" name="priceName" class="layui-input">
+                                            </div>
+                                        </td>
+                                        <td id="priceDesc">
+                                            <div class="layui-form-item layui-input-inline">
+                                                <input type="text" name="priceDesc" class="layui-input">
+                                            </div>
+                                        </td>
+                                        <td id="number">
+                                            <div class="layui-form-item layui-input-inline">
+                                                <input type="text" name="number" class="layui-input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" value="新增奖项" class="btn btn-info" onclick="addRow()"/><br/>
+                        </div>
+                        <div class="form-group" id="9">
+                            <label for="name">过滤程度</label><br/>
+                            <span class="help-block">(不过滤：只要在抽奖时间段发布过抽奖关键词的用户均可参加抽奖<br/>
+                            普通过滤：过滤掉助教和老师用户，过滤掉潜水用户（聊天只发抽奖关键词）
+                            深度过滤：过滤活跃度低于x的用户）</span>
+                            <input type="radio" name="filter" id="optionRadios1" value="1" checked/>不过滤<br/>
+                            <input type="radio" name="filter" id="optionRadios2" value="2"/>普通过滤<br/>
+                            <input type="radio" name="filter" id="optionRadios3" value="3"/>深度过滤<br/>
+                        </div>
+                        <input type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="提交后无法修改" onclick="doLottery()"/><br/>
+                        <br/>
+                    </form>
+                </div>        
+            </div>
+            <div class="footer">
+                <br/>
+                <h6>Copyright @ 2019 FZU 待就业六人组. All Rights Reserved.</h6>
+                <br/>
+            </div>
+        </div>
+    </body>
+</html>
