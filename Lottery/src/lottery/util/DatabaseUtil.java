@@ -15,7 +15,7 @@ public class DatabaseUtil {
     private static final String DATABASE = "lottery";
     private static final String ENCODING = "UTF-8";
     private static final String LOGINNAME = "root";
-    private static final String PASSWORD = "998911";
+    private static final String PASSWORD = "0523";
 
     static {
         try {
@@ -135,7 +135,7 @@ public class DatabaseUtil {
 
     /**
      * @param mesage
-     * @return lottery.util.DBUtil.Content
+     * @return lottery.util.DatabaseUtil.Content
      * @author Murphy
      * @date 2019/4/21 17:40
      * @description 解析内容
