@@ -15,7 +15,7 @@ public class DatabaseUtil {
     private static final String DATABASE = "lottery";
     private static final String ENCODING = "UTF-8";
     private static final String LOGINNAME = "root";
-    private static final String PASSWORD = "998911";
+    private static final String PASSWORD = "123456";
 
     static {
         try {

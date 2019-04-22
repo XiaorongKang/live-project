@@ -1,6 +1,7 @@
 package lottery.servlet;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,7 +24,7 @@ import lottery.service.HandleAwards;
 /**
  * Servlet implementation class AwardsForm
  */
-@WebServlet("/AwardsForm")
+@WebServlet(name="AwardsFormServlet",urlPatterns="startLotteryDraw")
 public class AwardsFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +32,7 @@ public class AwardsFormServlet extends HttpServlet {
 	 * 生成奖项表、抽奖条件表并存入数据库
 	 */
 	public void service(HttpServletRequest request,HttpServletResponse response) {
+		System.out.println("test");
 		try {
 			List<AwardsForm> awardsForms = HandleAwards.handleJson(request);
 			LotteryConditions lotteryConditions = HandleConditions.handleConditions(request);
@@ -40,6 +42,7 @@ public class AwardsFormServlet extends HttpServlet {
 			String path = hf.processRequest(request, response, getServletContext());
 			RequestDispatcher rd = request.getRequestDispatcher("");
 			rd.forward(request, response);
+			System.out.println("I am here!");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch blocks
 			e.printStackTrace();
@@ -51,7 +54,7 @@ public class AwardsFormServlet extends HttpServlet {
 			e.printStackTrace();
 		} 
 		catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}

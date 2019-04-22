@@ -79,14 +79,14 @@
                     </div>
                 </div>
                 <div class="col-md-4 column">
-                    <form class="form-inline" role="form" method="POST" action="http://host/api/startLotteryDraw/">
+                    <form class="form-inline" role="form" method="POST" action="http://localhost:8888/Lottery/startLotteryDraw" target="nm_iframe">
                         <div class="form-group" id="1">
                             <label for="name">上传文件</label>
                             <input type="file" name="fileName" required/>
                         </div><br/><br/>
                         <input type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="提交后无法修改"/>
                     </form><br/>
-
+					<iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
                     <form  id="form" class="" action="" method="POST" enctype='application/json'>
                         <div class="form-group" id="2">
                             <label for="name">活动名称</label>
@@ -156,7 +156,7 @@
                             <input type="radio" name="filter" id="optionRadios2" value="2"/>普通过滤<br/>
                             <input type="radio" name="filter" id="optionRadios3" value="3"/>深度过滤<br/>
                         </div>
-                        <input type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="提交后无法修改" onclick="doLottery()"/><br/>
+                        <input type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="提交后无法修改" onclick="doLottery()"/><br/>
                         <br/>
                     </form>
                 </div>        

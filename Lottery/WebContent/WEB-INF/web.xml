@@ -14,6 +14,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>awardsFromsServlet</servlet-name>
-		<url-pattern>/servlet</url-pattern>
+		<url-pattern>/startLotteryDraw</url-pattern>
 	</servlet-mapping>
 </web-app>
